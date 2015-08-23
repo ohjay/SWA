@@ -48,6 +48,16 @@
         android:text="@string/button_msg"
         android:id="@+id/button"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="175dp" />
+        android:layout_marginBottom="175dp"
+        android:onClick="getWord" />
+
+    <TextView
+        android:id="@+id/results"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="134dp"
+        android:textStyle="bold" />
 
 </FrameLayout>
