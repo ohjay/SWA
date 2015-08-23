@@ -1,8 +1,36 @@
 <resources>
     <string name="app_name">SWA</string>
-    <string name="action_settings">Settings</string>
-    <string name="background_desc">Background Image</string>
+    <string name="background_desc">Background image</string>
     <string name="letter_prompt">What letter does it start with?</string>
-    <string name="word_desc_prompt">What are some similar words?</string>
+    <string name="word_desc_prompt">What words does it make you think of?</string>
     <string name="button_msg">Get the word</string>
+    
+    <string-array name="letters">
+        <item>     A     </item>
+        <item>     B     </item>
+        <item>     C     </item>
+        <item>     D     </item>
+        <item>     E     </item>
+        <item>     F     </item>
+        <item>     G     </item>
+        <item>     H     </item>
+        <item>     I     </item>
+        <item>     J     </item>
+        <item>     K     </item>
+        <item>     L     </item>
+        <item>     M     </item>
+        <item>     N     </item>
+        <item>     O     </item>
+        <item>     P     </item>
+        <item>     Q     </item>
+        <item>     R     </item>
+        <item>     S     </item>
+        <item>     T     </item>
+        <item>     U     </item>
+        <item>     V     </item>
+        <item>     W     </item>
+        <item>     X     </item>
+        <item>     Y     </item>
+        <item>     Z     </item>
+    </string-array>
 </resources>

@@ -1,7 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/background"
@@ -11,20 +11,36 @@
         android:contentDescription="@string/background_desc"
         android:src="@drawable/geo_background" />
 
-    <EditText
-        android:id="@+id/editText1"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="@string/letter_prompt"
+        android:orientation="horizontal"
         android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="185dp"/>
+        android:layout_marginTop="240dp">
 
-    <AutoCompleteTextView
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/letter_prompt"
+            android:textSize="18sp"/>
+
+        <Spinner
+            android:id="@+id/letterSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:dropDownWidth="49dp" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/wordDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/word_desc_prompt"
-        android:layout_gravity="center" />
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="290dp"
+        android:ems="15"
+        android:inputType="textAutoCorrect" />
 
     <Button
         android:layout_width="wrap_content"
