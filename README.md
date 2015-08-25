@@ -3,4 +3,7 @@ SWA, aka "Starts With A", is an Android application for people who often pose th
 
 _Hey, what's that word that starts with a 'z' and means 'the science of waves'?_
 
-Although any normal person would immediately answer "kymatology", the asker might not be blessed with such normal friends or colleagues. In that case, he or she would be able to turn to SWA for easy, streamlined aid. SWA will always be there for you! Except when your phone battery dies.
+Although any normal person would immediately answer "kymatology", the asker might not be blessed with such normal friends or colleagues. And in that case, he or she would be able to turn to SWA for easy, streamlined aid. SWA will always be there for you! Except when your phone battery dies.
+
+### Features
+At the moment – and for the foreseeable future – SWA only includes support for English nouns.
