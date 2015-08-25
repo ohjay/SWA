@@ -114,33 +114,42 @@ public class StartsWithAnActivity extends AppCompatActivity {
      * @return the most promising word
      */
     private String searchDatabase(String letter, String[] words) {
-        // Create a hash map that will keep track of the number of times each association comes up
-        HashMap<String, Integer> associationCts = new HashMap<String, Integer>();
+        // Create a hash map that will keep track of the score for each association
+        HashMap<String, Integer> associationScores = new HashMap<String, Integer>();
 
         // These variables will keep track of aforementioned "most promising word"
         String bestMatch = null;
-        int highestCount = 0;
+        int highestScore = 0;
 
-        Integer count; // the count for each new association
+        int score; // the score for each new association
+        String definition; // the definition for some word in question
         for (String word : words) {
-            for (String association : nounDB.getWordAssociations(word)) {
+            for (String association : nounDB.getWordAssociations(word.toLowerCase())) {
                 if (association.toLowerCase().startsWith(letter)) {
-                    // We'll only consider the word at all if it starts with LETTER
+                    // We'll only consider the association at all if it starts with LETTER
 
-                    // First, reformat the constituent words of a collocation (repl "_"s w/ " "s)
+                    score = 2; // the word came up here, so it gets a +2 bonus no matter what
+
+                    // First, analyze the dictionary definition of our potential answer
+                    definition = nounDB.getDefinition(association).toLowerCase();
+                    for (String w : words) {
+                        if (definition.contains(w.toLowerCase())) {
+                            score += 1;
+                        }
+                    }
+
+                    // Reformat the constituent words of a collocation (repl "_"s w/ " "s)
                     association = association.replace('_', ' ');
 
-                    count = associationCts.get(association);
-                    if (count == null) { // the word hasn't been seen before
-                        count = 1;
-                    } else {
-                        count += 1;
+                    Integer currScore = associationScores.get(association);
+                    if (currScore != null) { // the word already has a running score
+                        score += currScore; // ...so we'll add it in
                     }
 
                     // Add the word to the map of association rankings
-                    associationCts.put(association, count);
-                    if (count > highestCount) {
-                        highestCount = count;
+                    associationScores.put(association, score);
+                    if (score > highestScore) {
+                        highestScore = score;
                         bestMatch = association;
                     }
                 }

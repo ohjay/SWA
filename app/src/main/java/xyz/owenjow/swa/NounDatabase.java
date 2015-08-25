@@ -24,11 +24,13 @@ public class NounDatabase {
 
     private HashMap<Integer, HashSet<String>> synsetsByID;
     private HashMap<String, HashSet<Integer>> synsetsByNoun;
+    private HashMap<String, String> dictionary; // word --> definition
     private Digraph hyponymGraph;
 
     public NounDatabase(AssetManager assets) {
         synsetsByID = new HashMap<Integer, HashSet<String>>();
         synsetsByNoun = new HashMap<String, HashSet<Integer>>();
+        dictionary = new HashMap<String, String>();
 
         // Parse the synset & hyponym text files
         try {
@@ -45,13 +47,13 @@ public class NounDatabase {
 
     /**
      * Processes the synset file and updates the internal hash map
-     * with the newly acquired data.
+     * with the newly acquired data. Also adds entries to the dictionary map.
      * @param synsetStream the input stream for the synsets.txt file
      */
     private void processSynsetFile(InputStream synsetStream) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(synsetStream));
         try {
-            String[] synsetData = new String[3]; // there should be 3 data components per line
+            String[] synsetData; // there should be 3 data components per line
             String line = reader.readLine();
 
             while (line != null) {
@@ -69,6 +71,7 @@ public class NounDatabase {
 
                 for (String noun : synonyms) {
                     nounSet.add(noun);
+                    dictionary.put(noun, synsetData[2]); // add the word/def to the dictionary
 
                     if (synsetsByNoun.containsKey(noun)) {
                         idSet = synsetsByNoun.get(noun);
@@ -151,5 +154,15 @@ public class NounDatabase {
         }
 
         return associations;
+    }
+
+    /**
+     * Returns the dictionary definition for the word WORD,
+     * or an empty string if no definition is found.
+     * @param word presumably a very intriguing word that we don't know the definition of
+     * @return the definition of WORD
+     */
+    public String getDefinition(String word) {
+        return dictionary.get(word);
     }
 }
