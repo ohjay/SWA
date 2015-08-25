@@ -4,6 +4,8 @@
     <string name="letter_prompt">What letter does it start with?</string>
     <string name="word_desc_prompt">What words does it make you think of?</string>
     <string name="button_msg">Get the word</string>
+    <string name="loading_text">... Loading ...</string>
+    <string name="loading_subtext">Please wait 10-15 seconds for the database to load.</string>
     
     <string-array name="letters">
         <item>     A     </item>
@@ -33,4 +35,5 @@
         <item>     Y     </item>
         <item>     Z     </item>
     </string-array>
+
 </resources>
