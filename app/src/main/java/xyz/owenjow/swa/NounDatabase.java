@@ -19,8 +19,8 @@ import java.util.Set;
  * @author Owen Jow
  */
 public class NounDatabase {
-    private static final String SYNSET_FILEPATH = "synsets.txt";
-    private static final String HYPONYM_FILEPATH = "hyponyms.txt";
+    private static final String SYNSET_FILENAME = "synsets.txt";
+    private static final String HYPONYM_FILENAME = "hyponyms.txt";
 
     private HashMap<Integer, HashSet<String>> synsetsByID;
     private HashMap<String, HashSet<Integer>> synsetsByNoun;
@@ -32,8 +32,8 @@ public class NounDatabase {
 
         // Parse the synset & hyponym text files
         try {
-            processSynsetFile(assets.open("synsets.txt"));
-            populateHyponymGraph(assets.open("hyponyms.txt"));
+            processSynsetFile(assets.open(SYNSET_FILENAME));
+            populateHyponymGraph(assets.open(HYPONYM_FILENAME));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (IllegalArgumentException e) {

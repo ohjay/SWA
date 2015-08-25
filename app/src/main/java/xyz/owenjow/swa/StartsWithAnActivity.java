@@ -82,6 +82,9 @@ public class StartsWithAnActivity extends AppCompatActivity {
                 if (association.toLowerCase().startsWith(letter)) {
                     // We'll only consider the word at all if it starts with LETTER
 
+                    // First, reformat the constituent words of a collocation (repl "_"s w/ " "s)
+                    association = association.replace('_', ' ');
+
                     count = associationCts.get(association);
                     if (count == null) { // the word hasn't been seen before
                         count = 1;
