@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.HashMap;
+
 /**
  * The main activity for the SWA application.
  * @author Owen Jow
@@ -67,6 +69,40 @@ public class StartsWithAnActivity extends AppCompatActivity {
      * @return the most promising word
      */
     private String searchDatabase(String letter, String[] words) {
-        return "";
+        // Create a hash map that will keep track of the number of times each association comes up
+        HashMap<String, Integer> associationCts = new HashMap<String, Integer>();
+
+        // These variables will keep track of aforementioned "most promising word"
+        String bestMatch = null;
+        int highestCount = 0;
+
+        Integer count; // the count for each new association
+        for (String word : words) {
+            for (String association : nounDB.getWordAssociations(word)) {
+                if (association.toLowerCase().startsWith(letter)) {
+                    // We'll only consider the word at all if it starts with LETTER
+
+                    count = associationCts.get(association);
+                    if (count == null) { // the word hasn't been seen before
+                        count = 1;
+                    } else {
+                        count += 1;
+                    }
+
+                    // Add the word to the map of association rankings
+                    associationCts.put(association, count);
+                    if (count > highestCount) {
+                        highestCount = count;
+                        bestMatch = association;
+                    }
+                }
+            }
+        }
+
+        if (bestMatch == null) {
+            return "NO WORDS FOUND";
+        } else {
+            return bestMatch;
+        }
     }
 }

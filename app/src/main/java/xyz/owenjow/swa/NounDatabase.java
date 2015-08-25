@@ -140,16 +140,16 @@ public class NounDatabase {
         HashSet<Integer> synsetIDs = synsetsByNoun.get(word);
         Set<Integer> hyponymIDs = hyponymGraph.reachableVertices(synsetIDs);
 
-        HashSet<String> hyponymSet = new HashSet<String>();
+        HashSet<String> associations = new HashSet<String>();
         // Include all synonyms of WORD
         for (Integer id : synsetIDs) {
-            hyponymSet.addAll(synsetsByID.get(id));
+            associations.addAll(synsetsByID.get(id));
         }
         // Include all hyponyms of WORD
         for (Integer id : hyponymIDs) {
-            hyponymSet.addAll(synsetsByID.get(id));
+            associations.addAll(synsetsByID.get(id));
         }
 
-        return hyponymSet;
+        return associations;
     }
 }
